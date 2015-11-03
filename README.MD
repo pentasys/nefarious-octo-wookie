@@ -1,9 +1,9 @@
 
 #Frontend
-1) Install node
-2) install bower
-3) init node: npm install (in the frontend folder)
-4) init bower: bower install (in the frontend folder)
+1. Install node
+2. install bower
+3. init node: npm install (in the frontend folder)
+4. init bower: bower install (in the frontend folder)
 
 Gulp default task will start a server listening on port 8001.
 
