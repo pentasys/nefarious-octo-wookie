@@ -1,0 +1,14 @@
+# backend
+*.iml
+.gradle
+.idea
+build
+
+# frontend
+node_modules
+bower_components
+dist
+
+# distribution
+dist/*.war
+dist/*.zip

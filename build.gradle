@@ -1,0 +1,24 @@
+group 'de.pentasys'
+version '1.0-SNAPSHOT'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+task distribute(description: 'Creates the distribution packages in the root dist folder', dependsOn: 'copyFrontend') {
+    outputs.upToDateWhen { false }
+    dependsOn(":Backend:bootRepackage")
+//    shouldRunAfter {
+//        removeFrontend.execute()
+//    }
+}
+task copyFrontend(type: Copy, dependsOn: ':Frontend:build') {
+    outputs.upToDateWhen { false }
+    from "Frontend/dist"
+    into "Backend/src/main/resources/static/"
+}
+
+task removeFrontend() {
+    outputs.upToDateWhen { false }
+    delete "Backend/src/main/resources/static/"
+}

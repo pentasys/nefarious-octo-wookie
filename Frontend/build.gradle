@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+        classpath 'com.moowork.gradle:gradle-gulp-plugin:0.11'
+    }
+}
+
+apply plugin: 'com.moowork.gulp'
+
+task build() {
+    dependsOn 'nodeSetup'
+    dependsOn 'npmInstall'
+    dependsOn 'installGulp'
+    dependsOn 'gulp_distribute'
+}
+
+gulp {
+    // Set the directory where gulpfile.js should be found
+    workDir = file("${project.projectDir}/app-build/")
+    colors = true
+    bufferOutput = false
+}
+
+node {
+    version = '0.12.7'
+    download = true
+}
