@@ -34,6 +34,6 @@ gulp {
 }
 
 node {
-    version = '0.12.7'
+    version = '4.2.2'
     download = true
 }
