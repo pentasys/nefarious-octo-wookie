@@ -12,12 +12,18 @@ buildscript {
 
 apply plugin: 'com.moowork.gulp'
 
-task build() {
-    dependsOn 'nodeSetup'
-    dependsOn 'npmInstall'
-    dependsOn 'installGulp'
-    dependsOn 'gulp_distribute'
-}
+
+task build() {}
+gulp_distribute.dependsOn nodeSetup
+gulp_distribute.dependsOn npmInstall
+gulp_distribute.dependsOn installGulp
+//gulp_distribute.dependsOn bowerInstall
+build.dependsOn gulp_distribute
+
+// Does not work on windows when git is not installed globaly
+//task bower(type: Exec){
+//    commandLine "bower", 'install'
+//}
 
 gulp {
     // Set the directory where gulpfile.js should be found

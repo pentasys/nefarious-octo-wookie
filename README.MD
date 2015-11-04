@@ -16,3 +16,7 @@ Start the distribute task (gradle task) in the root project.
 #Remarks
 Be carefull when changing the static folder generated in the backends resources directory
 as this directory is by naming convention needed to serve static content and files!
+
+#Current Problems
+Currently bower can not be installed on windows machines where git is not installed
+globally. Therefore no dependencies will be copied to the output artifact.

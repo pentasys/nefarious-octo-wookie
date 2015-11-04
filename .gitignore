@@ -3,6 +3,7 @@
 .gradle
 .idea
 build
+/**/resources/static/
 
 # frontend
 node_modules

@@ -8,10 +8,11 @@ task wrapper(type: Wrapper) {
 task distribute(description: 'Creates the distribution packages in the root dist folder', dependsOn: 'copyFrontend') {
     outputs.upToDateWhen { false }
     dependsOn(":Backend:bootRepackage")
-//    shouldRunAfter {
+//    mustRunAfter {
 //        removeFrontend.execute()
 //    }
 }
+
 task copyFrontend(type: Copy, dependsOn: ':Frontend:build') {
     outputs.upToDateWhen { false }
     from "Frontend/dist"
