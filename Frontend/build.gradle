@@ -14,18 +14,17 @@ buildscript {
 
 apply plugin: 'com.moowork.gulp'
 
+task bowerInstall(type: Exec) {
+    def shell = Os.isFamily(Os.FAMILY_WINDOWS) ? 'cmd' : 'sh'
+    commandLine "${shell}", "/c", "node_modules\\bower-installer\\node_modules\\.bin\\bower", "install"
+}
+
 task build() {}
 gulp_distribute.dependsOn nodeSetup
 gulp_distribute.dependsOn npmInstall
 gulp_distribute.dependsOn installGulp
 gulp_distribute.dependsOn bowerInstall
 build.dependsOn gulp_distribute
-
-// Does not work on windows when git is not installed globaly
-task bower(type: Exec){
-    def shell = Os.isFamily(Os.FAMILY_WINDOWS) ? 'cmd' : 'sh'
-    commandLine "${shell}", "/c", "node_modules\\bower-installer\\node_modules\\.bin\\bower", "install"
-}
 
 gulp {
     // Set the directory where gulpfile.js should be found
